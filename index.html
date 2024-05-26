@@ -8,24 +8,37 @@
 </head>
 <body>
     <div class="container">
-        <img src="9956957_48068.jpg" class="background_image" alt="Пример изображения">
-        <img src="settings.png" class="settings">
-        <img id="mute-button"src="volume.png" class="mute"  onclick="toggleMute()">
-        <img class="mail" src="email.png">
-        <button id="play-button" class="play-button" onclick="playMusic()">Play Music</button>
-        <audio id="background-music" src="cute-creatures-150622.mp3" preload="auto"></audio>
+        <img src="img/vivid-blurred-colorful-wallpaper-background.jpg" class="background_image" alt="Пример изображения">
+        <img src="img/settings.png" class="settings">
+        <img id="mute-button" src="img/volume.png" class="mute" onclick="toggleMute()">
+        <img class="mail" src="img/email.png">
+        <div id="clickCounter" class="counter">0</div>
+        <img class="planet_earth" src="img/planet-earth.png">
+        <audio id="background-music" src="img/cute-creatures-150622.mp3" preload="auto"></audio>
+
     </div>
     <script>
-        function playMusic() {
-            var audio = document.getElementById('background-music');
-            var playButton = document.getElementById('play-button');
-            audio.play().then(() => {
-                playButton.hidden = true;
-            }).catch(error => {
-                console.error("Воспроизведение не удалось: ", error);
-            });
-        }
+        let counter = 0;
+        const counterElement = document.getElementById('clickCounter');
+        const planetEarth = document.querySelector('.planet_earth');
 
+        planetEarth.addEventListener('click', (event) => {
+            counter++;
+            counterElement.textContent = counter;
+
+            const floatingNumber = document.createElement('div');
+            floatingNumber.textContent = '+1';
+            floatingNumber.classList.add('floating-number');
+            floatingNumber.style.left = `${event.clientX}px`;
+            floatingNumber.style.top = `${event.clientY}px`;
+            document.body.appendChild(floatingNumber);
+
+            setTimeout(() => {
+                floatingNumber.remove();
+            }, 1000);
+        });
+    </script>
+    <script>
         function toggleMute() {
             var audio = document.getElementById('background-music');
             var muteButton = document.getElementById('mute-button');

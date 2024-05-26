@@ -28,14 +28,15 @@ body, html {
     z-index: -1;
 }
 
-.play-button, .mute-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1;
+.planet_earth{
+    width: 400px;
+    height: 400px;
+}
+.planet_earth:active{
+    width: 405px;
+    height: 405px;
+
+
 }
 
 .mute-button {
@@ -68,4 +69,37 @@ body, html {
 
 
 }
+.planet_earth{
+    cursor: pointer;
+}
+.counter {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 36px;
+    font-weight: bold;
 
+}
+.floating-number {
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    animation: float 1s ease-out;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
