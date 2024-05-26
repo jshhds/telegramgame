@@ -7,27 +7,47 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+<div class="progress-bar">
+    <div class="progress" id="progress"></div>
+</div>
     <div class="container">
-        <img src="img/vivid-blurred-colorful-wallpaper-background.jpg" class="background_image" alt="Пример изображения">
+        <div id="clickCounter" class="counter">0</div>
         <img src="img/settings.png" class="settings">
         <img id="mute-button" src="img/volume.png" class="mute" onclick="toggleMute()">
         <img class="mail" src="img/email.png">
-        <div id="clickCounter" class="counter">0</div>
-        <img class="planet_earth" src="img/planet-earth.png">
-        <audio id="background-music" src="img/cute-creatures-150622.mp3" preload="auto"></audio>
+        <img id="planet_earth" class="planet_earth" src="img/planet-earth.png">
+
 
     </div>
     <script>
         let counter = 0;
+        const targetClicks = 100;
         const counterElement = document.getElementById('clickCounter');
+        const progressElement = document.getElementById('progress');
         const planetEarth = document.querySelector('.planet_earth');
 
+
         planetEarth.addEventListener('click', (event) => {
-            counter++;
-            counterElement.textContent = counter;
+            counter+=2;
+            if(counter>10){
+                const img = document.getElementById('planet_earth');
+                img.src = 'img/moon.png';
+
+            }
+            if(counter>20){
+                const img = document.getElementById('planet_earth');
+                img.src = 'img/mars-planet.png';
+
+            }
+            if(counter>30){
+                const img = document.getElementById('planet_earth');
+                img.src = 'img/planet-jupiter.png';
+            }
+            counterElement.textContent = `${counter} / ${targetClicks}`;
+            progressElement.style.width = `${(counter / targetClicks) * 100}%`;
 
             const floatingNumber = document.createElement('div');
-            floatingNumber.textContent = '+1';
+            floatingNumber.textContent = '+2';
             floatingNumber.classList.add('floating-number');
             floatingNumber.style.left = `${event.clientX}px`;
             floatingNumber.style.top = `${event.clientY}px`;
@@ -35,6 +55,12 @@
 
             setTimeout(() => {
                 floatingNumber.remove();
+            }, 1000);
+
+            // Изменяем цвет изображения на 1 секунду
+            planetEarth.classList.add('blue');
+            setTimeout(() => {
+                planetEarth.classList.remove('blue');
             }, 1000);
         });
     </script>
@@ -46,5 +72,7 @@
             muteButton.textContent = audio.muted ? 'Unmute' : 'Mute';
         }
     </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
