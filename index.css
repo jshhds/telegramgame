@@ -7,76 +7,104 @@ body, html {
     align-items: center;
     justify-content: center;
     background: linear-gradient(#000005, #050520);
-
+    font-family: "Roboto", "Noto", sans-serif;
+    overflow: hidden;
 }
 
 .container {
-    position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .background_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
     z-index: -1;
 }
 
-.planet_earth{
-    width: 400px;
-    height: 400px;
-}
-.planet_earth:active{
-    width: 405px;
-    height: 405px;
-
-
+.planet_earth {
+    width: 350px;
+    height: 350px;
+    cursor: pointer;
+    margin-bottom: 5%;
 }
 
-.mute-button {
+.planet_earth:active {
+    width: 360px;
+    height: 360px;
+}
+.settings {
+    height: 30px;
+    width: 30px;
     position: absolute;
-    top: 20px;
-    right: 20px;
-}
-.settings{
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 20px;
+    top: 30px;
     left: 10px;
-
 }
 .mute{
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     position: absolute;
-    top: 20px;
-    left: 70px;
+    top: 30px;
+    left: 130px;
 
 }
-.mail{
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    top: 20px;
-    left:130px;
-
-
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
-.planet_earth{
+.modal-content {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 5px;
+    width: 375px;
+    height: 375px;
+    max-width: 500px;
+    margin: auto;
+}
+.modal_text{
+    font-size: 24px;
+    text-align: center;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
     cursor: pointer;
+}
+.mail {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 30px;
+    left: 70px;
 }
 .counter {
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
     color: white;
@@ -84,8 +112,8 @@ body, html {
     border-radius: 5px;
     font-size: 36px;
     font-weight: bold;
-
 }
+
 .floating-number {
     position: absolute;
     font-size: 20px;
@@ -105,6 +133,7 @@ body, html {
         transform: translateY(-50px);
     }
 }
+
 .star, .planet {
     border-radius: 100%;
     position: absolute;
@@ -119,28 +148,6 @@ body, html {
     top: 100%;
 }
 
-.planet {
-    animation: twinkle 5s linear 0s infinite normal;
-    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.5);
-    border-radius: 100%;
-    z-index: 2;
-    left: 300%;
-    top: 300%;
-}
-
-.moon {
-    box-shadow: inset 0px 0px 50px 1px #6D8F94, 0px 0px 80px 30px rgba(143, 189, 255, .7);
-    box-shadow: inset 16px 0px rgba(0,0,0,0.05), inset 16px 0px 1px 2px rgba(0,0,0,0.05), 0px 0px 75px 0px rgba(255,255,255,0.50);
-    background: linear-gradient(325deg, rgba(213,211,230,1) 0%, rgba(179,179,179,1) 100%);
-    transform: rotate(35deg);
-    border-radius: 100%;
-    position: absolute;
-    height: 150px;
-    width: 150px;
-    z-index: 4;
-    right: 10%;
-    top: 10%;
-}
 
 @keyframes twinkle {
     0% {
@@ -149,7 +156,8 @@ body, html {
     }
     50% {
         transform: scale(0);
-        opacity: 0; }
+        opacity: 0;
+    }
     100% {
         transform: scale(1.0);
         opacity: 1;
